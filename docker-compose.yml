@@ -1,0 +1,48 @@
+version: '3'
+services:
+  flyway:
+    container_name: flyway-container
+    image: flyway/flyway:6.3.1
+    command: -configFiles=/flyway/conf/flyway.config -locations=filesystem:/flyway/sql -connectRetries=60 migrate
+    volumes:
+      - ./Server/EventsApp/sql_versions:/flyway/sql
+      - ./Server/EventsApp/docker-flyway.config:/flyway/conf/flyway.config
+    depends_on:
+      - postgresql
+
+  postgresql:
+    container_name: postgresql-container
+    image: postgres:9
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: events_app_db
+
+  spring-boot-app:
+    container_name: spring-boot-container
+    build:
+      context: ./Server/EventsApp
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgresql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgresql:5432/events_app_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: password
+      SPRING_MAIL_HOST: 'smtp.gmail.com'
+      SPRING_MAIL_PORT: 587
+      SPRING_MAIL_EMAIL: 'events.noreply.toik@gmail.com'
+      SPRING_MAIL_PASSWORD: 'gtlqolzqxwaljvdx'
+
+  react-app:
+    container_name: react-container
+    build:
+      context: ./Frontend/events-app
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
