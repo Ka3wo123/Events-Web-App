@@ -46,3 +46,11 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
+
+  jenkins:
+    container_name: jenkins-container
+    image: jenkins/jenkins:lts-jdk17
+    privileged: true
+    user: root
+    ports:
+      - "8081:8081"
