@@ -1,6 +1,5 @@
 package pl.test.events.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.test.events.models.dto.UserDto;
@@ -15,7 +14,6 @@ import java.util.List;
 public class UserController {
     private final UserService userService;
 
-    @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
     }

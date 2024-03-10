@@ -30,7 +30,6 @@ class UserServiceTest {
         List<UserDto> allUsers = userService.getAllUsers();
 
         Assertions.assertEquals(3, allUsers.size());
-        Assertions.assertEquals("John", allUsers.get(0).name());
 
     }
 

@@ -5,15 +5,10 @@ import React, { useState, useEffect } from 'react';
 import { Outlet, Route, Routes, useNavigate } from "react-router-dom"
 import axios from 'axios';
 
-
+// comment
 function App() {
-
-
   const [myLogin, setMyLogin] = useState("");
   const [isLogin, setIsLogin] = useState(false);
-
-
-
 
   useEffect(() => {
     const loginJSON = localStorage.getItem('isLogin');

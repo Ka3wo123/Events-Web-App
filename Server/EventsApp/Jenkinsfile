@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+
+    tools {
+        maven "M3"
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                script {
+                    // Build the Spring Boot application
+                    sh 'mvn clean package'
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                // Run tests if any
+                sh 'mvn test'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                script {
+
+                    // Deploy the Docker image to Render server
+                    sh 'mvn deploy'
+                }
+            }
+        }
+    }
+}
