@@ -1,7 +1,6 @@
 package pl.test.events.services;
 
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -25,7 +24,6 @@ public class UserService {
     private final UserDtoMapper userDtoMapper;
     private final EventRepository eventRepository;
 
-    @Autowired
     public UserService(UserRepository userRepository,
                        UserDtoMapper userDtoMapper,
                        EventRepository eventRepository) {

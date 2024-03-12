@@ -29,7 +29,6 @@ public class EventService {
     private final EventDtoMapper eventDtoMapper;
     private final JavaMailSenderImpl emailSender;
 
-    @Autowired
     public EventService(EventRepository eventRepository, EventDtoMapper eventDtoMapper, JavaMailSenderImpl emailSender) {
         this.eventRepository = eventRepository;
         this.eventDtoMapper = eventDtoMapper;

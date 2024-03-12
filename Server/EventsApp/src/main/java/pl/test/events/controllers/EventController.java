@@ -1,13 +1,8 @@
 package pl.test.events.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import pl.test.events.models.Event;
 import pl.test.events.models.dto.EventDto;
-import pl.test.events.models.dto.UserDto;
 import pl.test.events.services.EventService;
 
 import java.util.List;
@@ -19,7 +14,6 @@ public class EventController {
 
     private final EventService eventService;
 
-    @Autowired
     public EventController(EventService eventService) {
         this.eventService = eventService;
     }

@@ -7,13 +7,8 @@ import axios from 'axios';
 
 
 function App() {
-
-
   const [myLogin, setMyLogin] = useState("");
   const [isLogin, setIsLogin] = useState(false);
-
-
-
 
   useEffect(() => {
     const loginJSON = localStorage.getItem('isLogin');

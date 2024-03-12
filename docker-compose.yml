@@ -17,9 +17,9 @@ services:
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: events_app_db
+      POSTGRES_USER:
+      POSTGRES_PASSWORD:
+      POSTGRES_DB:
 
   spring-boot-app:
     container_name: spring-boot-container
@@ -27,17 +27,17 @@ services:
       context: ./Server/EventsApp
       dockerfile: Dockerfile
     ports:
-      - "8080:8080"
+      - "9090:9090"
     depends_on:
       - postgresql
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgresql:5432/events_app_db
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: password
-      SPRING_MAIL_HOST: 'smtp.gmail.com'
-      SPRING_MAIL_PORT: 587
-      SPRING_MAIL_EMAIL: 'events.noreply.toik@gmail.com'
-      SPRING_MAIL_PASSWORD: 'gtlqolzqxwaljvdx'
+      SPRING_DATASOURCE_URL:
+      SPRING_DATASOURCE_USERNAME:
+      SPRING_DATASOURCE_PASSWORD:
+      SPRING_MAIL_HOST:
+      SPRING_MAIL_PORT:
+      SPRING_MAIL_EMAIL:
+      SPRING_MAIL_PASSWORD:
 
   react-app:
     container_name: react-container
@@ -49,8 +49,12 @@ services:
 
   jenkins:
     container_name: jenkins-container
-    image: jenkins/jenkins:lts-jdk17
+    image: jenkins/jenkins
     privileged: true
     user: root
     ports:
-      - "8081:8081"
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - ./jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock

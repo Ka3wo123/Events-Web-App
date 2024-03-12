@@ -11,7 +11,7 @@ import { useState, useEffect } from 'react';
     }, []);
 
     const fetchEvents = () => {
-        axios.get('http://localhost:8080/event-app/events')
+        axios.get('http://localhost:9090/event-app/events')
             .then(response => {
                 console.log('Events', response.data);
                 setData(response.data);
@@ -21,11 +21,11 @@ import { useState, useEffect } from 'react';
     }
     return (
         <div className="events-container">
-            <Typography variant="h3">List of Events</Typography>            
+            <Typography variant="h3">List of Events</Typography>
             <ul>
                 {data.map(event => (
                     <li key={event.id}>
-                        {event.name} - {event.dateOfEvent}
+                        {event.name} : {event.dateOfEvent}
                     </li>
                 ))}
             </ul>
