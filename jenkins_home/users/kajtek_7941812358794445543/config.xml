@@ -40,7 +40,7 @@
       <flags/>
     </jenkins.model.experimentalflags.UserExperimentalFlagsProperty>
     <hudson.security.HudsonPrivateSecurityRealm_-Details>
-      <passwordHash>#jbcrypt:$2a$10$C0aIhokQTCG4MuJQkCGW5.Yb7FvaIiSXI3HpXajyy7DOEbg/Q505S</passwordHash>
+      <passwordHash>#jbcrypt:$2a$04$jT5p62xphXBvyGfeYe1cV.YKYl5gCxOTuwxQtRdufZEFSS2I7lxci</passwordHash>
     </hudson.security.HudsonPrivateSecurityRealm_-Details>
     <hudson.tasks.Mailer_-UserProperty plugin="mailer@463.vedf8358e006b_">
       <emailAddress>kajtek2n@gmail.com</emailAddress>
@@ -50,5 +50,11 @@
         <tokenList/>
       </tokenStore>
     </jenkins.security.ApiTokenProperty>
+    <jenkins.security.LastGrantedAuthoritiesProperty>
+      <roles>
+        <string>authenticated</string>
+      </roles>
+      <timestamp>1710235629519</timestamp>
+    </jenkins.security.LastGrantedAuthoritiesProperty>
   </properties>
 </user>

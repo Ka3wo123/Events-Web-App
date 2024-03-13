@@ -889,9 +889,11 @@ function registerTooltip(element) {
   if (element._tippy && element._tippy.props.theme === "tooltip") {
     element._tippy.destroy();
   }
-  if (element.hasAttribute("tooltip") && !element.hasAttribute("data-html-tooltip")) {
+  const tooltip = element.getAttribute("tooltip");
+  const htmlTooltip = element.getAttribute("data-html-tooltip");
+  if (tooltip !== null && tooltip.trim().length > 0 && (htmlTooltip === null || htmlTooltip.trim().length == 0)) {
     (0,tippy_esm/* default */.Ay)(element, Object.assign({
-      content: element => element.getAttribute("tooltip").replace(/<br[ /]?\/?>|\\n/g, "\n"),
+      content: () => tooltip.replace(/<br[ /]?\/?>|\\n/g, "\n"),
       onCreate(instance) {
         instance.reference.setAttribute("title", instance.props.content);
       },
@@ -903,9 +905,9 @@ function registerTooltip(element) {
       }
     }, TOOLTIP_BASE));
   }
-  if (element.hasAttribute("data-html-tooltip")) {
+  if (htmlTooltip !== null && htmlTooltip.trim().length > 0) {
     (0,tippy_esm/* default */.Ay)(element, Object.assign({
-      content: element => element.getAttribute("data-html-tooltip"),
+      content: () => htmlTooltip,
       allowHTML: true,
       onCreate(instance) {
         instance.props.interactive = instance.reference.getAttribute("data-tooltip-interactive") === "true";

@@ -17,9 +17,9 @@ services:
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_USER:
-      POSTGRES_PASSWORD:
-      POSTGRES_DB:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: events_app_db
 
   spring-boot-app:
     container_name: spring-boot-container
@@ -31,16 +31,16 @@ services:
     depends_on:
       - postgresql
     environment:
-      SPRING_DATASOURCE_URL:
-      SPRING_DATASOURCE_USERNAME:
-      SPRING_DATASOURCE_PASSWORD:
-      SPRING_MAIL_HOST:
-      SPRING_MAIL_PORT:
-      SPRING_MAIL_EMAIL:
-      SPRING_MAIL_PASSWORD:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgresql:5432/events_app_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: password
+      SPRING_MAIL_HOST: smtp.gmail.com
+      SPRING_MAIL_PORT: 587
+      SPRING_MAIL_EMAIL: events.noreply.toik@gmail.com
+      SPRING_MAIL_PASSWORD: gtlqolzqxwaljvdx
 
   react-app:
-    container_name: react-container
+    container_name: vite-react-container
     build:
       context: ./Frontend/events-app
       dockerfile: Dockerfile

@@ -1,5 +1,18 @@
+
+# IntelliJ Idea root
 .idea
 doc
 
+# jenkins_home
+jenkins_home
+!/jobs
+!/.gitignore
+!/*.xml
+!config.xml
+jobs/**
+!jobs/**/
+builds
+indexing
 
+# Docker
 docker-compose.yml
